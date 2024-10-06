@@ -62,3 +62,11 @@ export const getMovieDetail = async (movieId: string) => {
   const data = await res.json();
   return data;
 };
+
+export const getMovieSearch = async (query: string) => {
+  const res = await fetch(`https://ripleystream.vercel.app/api/v1/search?query=${query}&type=movies&api_token=${process.env.NEXT_PUBLIC_RIPLEYSTREAM_API_TOKEN}`);
+  const data = await res.json();
+  return data;
+};
+
+
