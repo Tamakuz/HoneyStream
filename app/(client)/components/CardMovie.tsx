@@ -1,8 +1,5 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import BlurImage from "./BlurImage";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import CardTamplate from "./CardTamplate";
 
 interface MovieData {

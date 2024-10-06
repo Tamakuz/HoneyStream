@@ -1,6 +1,6 @@
 "use client";
 import AnimePlay from '@/app/(client)/components/anime/AnimePlay';
-import InfoMovie from '@/app/(client)/components/anime/InfoMovie';
+import InfoMovie from '@/app/(client)/components/anime/InfoAnime';
 import DefaultLayout from '@/app/(client)/components/DefaultLayout';
 import SidebarLayout from '@/app/(client)/components/SidebarLayout';
 import { getAnimeDetail } from '@/app/(client)/service/animes.service';

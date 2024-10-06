@@ -3,7 +3,7 @@
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 
-const AnimateList = ({ children, data }: { children: React.ReactNode, data: any[] }) => {
+const AnimateList = ({ children, data }: { children: React.ReactNode, data: unknown[] }) => {
   const listRef = useRef<HTMLDivElement>(null);
   const [prevDataLength, setPrevDataLength] = useState(0);
 
@@ -27,7 +27,7 @@ const AnimateList = ({ children, data }: { children: React.ReactNode, data: any[
       }
       setPrevDataLength(data.flat().length);
     }
-  }, [data]);
+  }, [data, prevDataLength]);
 
   return (
     <div

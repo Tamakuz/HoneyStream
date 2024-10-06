@@ -2,7 +2,6 @@ import React from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Badge } from '@/components/ui/badge'
 import { Star, Calendar, DollarSign, TrendingUp } from 'lucide-react'
-import Image from 'next/image'
 import BlurImage from '../BlurImage'
 
 interface Poster {

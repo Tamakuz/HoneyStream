@@ -1,7 +1,6 @@
 import React from 'react'
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Star, Calendar, Clock, Film, Tv, Users, Sun, BookOpen } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import BlurImage from '../BlurImage';

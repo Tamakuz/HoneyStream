@@ -49,7 +49,7 @@ const MovieDiscoverList = () => {
         {data?.pages.map((page, pageIndex) =>
           page.results.movies.map((movie: any, movieIndex: number) => (
             <CardMovie
-              key={`${movie.id || movieIndex}-${pageIndex}`}
+              key={`${movie._id || movieIndex}-${pageIndex}`}
               data={movie}
               isLoading={false}
             />
