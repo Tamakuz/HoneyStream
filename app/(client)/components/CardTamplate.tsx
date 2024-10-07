@@ -54,9 +54,7 @@ const CardTamplate = ({
       <BlurImage
         src={poster_url}
         alt={title}
-        layout="fill"
-        objectFit="cover"
-        className="transition-transform duration-300 group-hover:scale-110"
+        className="transition-transform duration-300 group-hover:scale-110 w-full h-full object-cover"
       />
       <div
         ref={contentRef}
