@@ -11,20 +11,16 @@ const MovieDiscoverList = () => {
     threshold: 1,
   });
 
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-  } = useInfiniteQuery({
-    queryKey: ['movie-discover'],
-    queryFn: ({ pageParam = 1 }) => getMovieDiscover(pageParam),
-    getNextPageParam: (lastPage, allPages) => {
-      const nextPage = allPages.length + 1;
-      return lastPage.results.movies.length ? nextPage : undefined;
-    },
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    useInfiniteQuery({
+      queryKey: ["movie-discover"],
+      queryFn: ({ pageParam = 1 }) => getMovieDiscover(pageParam),
+      getNextPageParam: (lastPage, allPages) => {
+        const nextPage = allPages.length + 1;
+        return lastPage.results.movies.length ? nextPage : undefined;
+      },
+      cacheTime: 5 * 60 * 1000,
+    });
 
   if (inView && hasNextPage && !isFetchingNextPage) {
     fetchNextPage();

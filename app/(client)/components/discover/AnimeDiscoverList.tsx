@@ -24,6 +24,7 @@ const AnimeDiscoverList = () => {
       const nextPage = allPages.length + 1;
       return lastPage.results.animes.length ? nextPage : undefined;
     },
+    cacheTime: 5 * 60 * 1000,
   });
 
   if (inView && hasNextPage && !isFetchingNextPage) {
