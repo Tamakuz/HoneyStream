@@ -40,8 +40,8 @@ const MovieDiscoverList = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Discover Movies</h1>
-      <AnimateList data={data?.pages.map((page) => page.results.movies) || []}>
+        <h1 className="text-3xl font-bold">Discover Movies</h1>
+        <AnimateList>
         {data?.pages.map((page, pageIndex) =>
           page.results.movies.map((movie: any, movieIndex: number) => (
             <CardMovie

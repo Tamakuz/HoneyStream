@@ -46,7 +46,7 @@ const AnimeDiscoverList = () => {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Discover Anime</h1>
-      <AnimateList data={data?.pages.map((page) => page.results.animes) || []}>
+      <AnimateList>
         {data?.pages.map((page, pageIndex) =>
           page.results.animes.map((anime: any, animeIndex: number) => (
             <CardAnime key={`${anime.id || animeIndex}-${pageIndex}`} data={anime} isLoading={false} />

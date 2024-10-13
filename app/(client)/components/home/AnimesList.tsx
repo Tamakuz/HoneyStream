@@ -52,7 +52,7 @@ const AnimesList = () => {
   return (
     <>
       <AnimeHero anime={animeHero?.results.animes[0]} />
-      <AnimateList data={animeList?.results.animes}>
+      <AnimateList>
         {animeList?.results.animes.map((anime: any, index: number) => (
           <CardAnime key={index} data={anime} isLoading={false} />
         ))}

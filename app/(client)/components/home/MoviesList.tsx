@@ -33,7 +33,7 @@ const MoviesList = () => {
   return (
     <>
       <MovieHero />
-      <AnimateList data={data?.results.movies}>
+      <AnimateList>
         {data?.results.movies.map((movie: any, index: number) => (
           <CardMovie key={index} data={movie} isLoading={false} />
         ))}
