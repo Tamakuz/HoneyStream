@@ -53,8 +53,8 @@ const AnimesList = () => {
     <>
       <AnimeHero anime={animeHero?.results.animes[0]} />
       <AnimateList data={animeList?.results.animes}>
-        {animeList?.results.animes.map((anime: any) => (
-          <CardAnime key={anime.id} data={anime} isLoading={false} />
+        {animeList?.results.animes.map((anime: any, index: number) => (
+          <CardAnime key={index} data={anime} isLoading={false} />
         ))}
       </AnimateList>
     </>

@@ -13,8 +13,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const SearchResults = () => {
   const searchParams = useSearchParams();
-  const query = searchParams.get('q') || '';
-  const type = searchParams.get('type') || 'movie';
+  const query = searchParams?.get('q') || '';
+  const type = searchParams?.get('type') || 'movie';
 
   const { data, isLoading, error } = useQuery(
     ['search', query, type],
@@ -34,9 +34,15 @@ const SearchResults = () => {
     );
   }
 
+  if (!data || !data.results) {
+    return <div>No results found.</div>;
+  }
+
+  const items = data.results[type === 'movie' ? 'movies' : 'animes'] || [];
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      {data?.results[type === 'movie' ? 'movies' : 'animes'].map((item: any) => (
+      {items.map((item: any) => (
         type === 'movie' 
           ? <CardMovie key={item._id} data={item} isLoading={false} />
           : <CardAnime key={item._id} data={item} isLoading={false} />
@@ -47,8 +53,8 @@ const SearchResults = () => {
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
-  const query = searchParams.get('q');
-  const type = searchParams.get('type') || 'movie';
+  const query = searchParams?.get('q') || '';
+  const type = searchParams?.get('type') || 'movie';
 
   return (
     <DefaultLayout>

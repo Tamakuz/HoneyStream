@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Plus, Play } from "lucide-react";
 import { gsap } from "gsap";
 import Link from "next/link";
+import ButtonAddWatchlist from "./ButtonAddWatchlist";
 
 const CardTamplate = ({
   id,
@@ -68,20 +69,14 @@ const CardTamplate = ({
             {year}
           </p>
         </div>
-        <div className="flex justify-between items-center gap-3 mt-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full transition-colors duration-300"
-          >
-            <Plus className="h-5 w-5 text-white drop-shadow" />
-          </Button>
-          <Link href={`/${type}/${id}`}>
+        <div className="flex gap-1 mt-4 w-full">
+          <ButtonAddWatchlist contentId={id} type={type as 'movie' | 'anime'} />
+          <Link href={`/${type}/${id}`} className="flex-grow">
             <Button
               variant="default"
-              className="bg-primary hover:bg-primary/90 text-white grow font-bold backdrop-blur-sm rounded-full transition-colors duration-300 flex items-center justify-center gap-2"
+              className="bg-primary w-full hover:bg-primary/90 text-white font-bold backdrop-blur-sm rounded-full transition-colors duration-300 flex items-center justify-center gap-1"
             >
-              <Play className="h-4 w-4" /> Watch Now
+              <Play className="h-4 w-4" /> Watch now
             </Button>
           </Link>
         </div>

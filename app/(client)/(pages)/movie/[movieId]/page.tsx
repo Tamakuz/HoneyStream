@@ -6,21 +6,49 @@ import InfoMovie from "@/app/(client)/components/movie/InfoMovie";
 import MoviePlay from "@/app/(client)/components/movie/MoviePlay";
 import SidebarLayout from "@/app/(client)/components/SidebarLayout";
 import { getMovieDetail } from "@/app/(client)/service/movies.service";
+import { useSession } from "next-auth/react";
 import React from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { client } from "@/app/(client)/lib/hc";
 
 const MovieStreamPage = ({ params }: { params: { movieId: string } }) => {
+  const { data: session, update } = useSession();
+
+  const postHistoryMutation = useMutation(async () => {
+    if ((session?.user as any)?.id) {
+      try {
+        await client.api.history.$post({
+          json: {
+            userId: (session?.user as any).id,
+            contentId: params.movieId,
+            type: "movie",
+          },
+        });
+
+        update(() => {
+          return {
+            ...session?.user,
+            watchlist: [...(session?.user as any)?.watchlist, params.movieId],
+          };
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  });
+  
   const { data, isLoading } = useQuery({
     queryKey: ["movie", params.movieId],
     queryFn: () => getMovieDetail(params.movieId),
+    onSuccess: () => {
+      postHistoryMutation.mutate();
+    },
     enabled: !!params.movieId,
     refetchOnWindowFocus: false,
-    refetchOnMount: false,
     refetchOnReconnect: false,
     cacheTime: Infinity,
   });
 
-  // console.log(data);
   return (
     <DefaultLayout>
       <SidebarLayout>
