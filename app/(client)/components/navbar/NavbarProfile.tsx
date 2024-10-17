@@ -14,10 +14,10 @@ import { User, Settings, HelpCircle, LogOut, LogIn, Bookmark, History } from 'lu
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
+import { Session } from 'next-auth';
 
 const NavbarProfile = () => {
-  const { data: session } = useSession();
-  console.log(session);
+  const { data: session } = useSession() as { data: Session };
 
   return (
     <DropdownMenu>
@@ -25,7 +25,7 @@ const NavbarProfile = () => {
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10">
             <AvatarImage src="/avatars/01.png" alt="@username" />
-            <AvatarFallback>UN</AvatarFallback>
+            <AvatarFallback>{session?.user?.name?.split(' ').map(n => n[0]).join('')}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -42,8 +42,10 @@ const NavbarProfile = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <User className="mr-2 h-4 w-4" />
-          <span>Profile</span>
+          <Link href="/profile" className="w-full flex items-center">
+            <User className="mr-2 h-4 w-4" />
+            <span>Profile</span>
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link href="/watchlist" className="w-full flex items-center">
