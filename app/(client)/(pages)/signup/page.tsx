@@ -54,7 +54,7 @@ const SignupPage = () => {
       setIsLoading(true);
       try {
         const res = await client.api.user.signup.$post({
-          json: values
+          json: values,
         });
         const data = await res.json() as { error?: string; message?: string };
         

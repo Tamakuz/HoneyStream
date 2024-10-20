@@ -19,6 +19,7 @@ declare module "next-auth" {
       provider: string;
       watchlist: WatchlistItem[];
       history: HistoryItem[];
+      avatarUrl: string;
     } & DefaultSession["user"];
     expires: string;
   }

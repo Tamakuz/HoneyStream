@@ -24,7 +24,7 @@ const NavbarProfile = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10">
-            <AvatarImage src="/avatars/01.png" alt="@username" />
+            <AvatarImage src={session?.user?.avatarUrl} alt="@username" />
             <AvatarFallback>{session?.user?.name?.split(' ').map(n => n[0]).join('')}</AvatarFallback>
           </Avatar>
         </Button>

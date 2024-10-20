@@ -73,6 +73,7 @@ export const authOptions: NextAuthOptions = {
             contentId: item.contentId,
             type: item.type,
           }));
+          token.avatarUrl = existingUser[0].avatarUrl;
         }
       }
       return token;
@@ -84,6 +85,7 @@ export const authOptions: NextAuthOptions = {
         session.user.provider = token.provider as string;
         session.user.watchlist = token.watchlist as any;
         session.user.history = token.history as any;
+        session.user.avatarUrl = token.avatarUrl as string;
       }
       return session;
     },
