@@ -4,7 +4,7 @@ import user from "../../routes/user";
 import watchlist from "../../routes/watchlist";
 import history from "../../routes/history";
 import imagekit from "../../routes/imagekit";
-
+import comment from "../../routes/comment";
 const app = new Hono().basePath("/api");
 
 const routes = app
@@ -12,7 +12,7 @@ const routes = app
   .route("/watchlist", watchlist)
   .route("/history", history)
   .route("/imagekit", imagekit)
-  
+  .route("/comment", comment)
 export const GET = app.fetch;
 export const POST = app.fetch;
 export const OPTIONS = app.fetch; // Add OPTIONS method to handle preflight requests

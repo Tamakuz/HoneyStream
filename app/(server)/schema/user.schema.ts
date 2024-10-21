@@ -30,6 +30,18 @@ export const watchlist = pgTable('watchlist', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
+export const comments = pgTable('comments', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  contentId: varchar('content_id', { length: 255 }).notNull(),
+  type: varchar('type', { length: 5 }).$type<'movie' | 'anime'>().notNull(),
+  text: text('text').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+
 export type User = typeof users.$inferSelect;
 export type Watchlist = typeof watchlist.$inferSelect;
 export type History = typeof history.$inferSelect;
+export type Comments = typeof comments.$inferSelect;

@@ -1,3 +1,4 @@
+import { client } from "../lib/hc";
 export const getBackdropsMoviesHero = async () => {
   const res = await fetch(`https://ripleystream.vercel.app/api/v1/movies/popular?api_token=${process.env.NEXT_PUBLIC_RIPLEYSTREAM_API_TOKEN}`);
   const data = await res.json();
@@ -67,6 +68,17 @@ export const getMovieSearch = async (query: string) => {
   const res = await fetch(`https://ripleystream.vercel.app/api/v1/search?query=${query}&type=movies&api_token=${process.env.NEXT_PUBLIC_RIPLEYSTREAM_API_TOKEN}`);
   const data = await res.json();
   return data;
+};
+export const getCommentsMovie = async (contentId: string) => {
+  const res = await client.api.comment[':contentId'][':type'].$get({
+    param: {
+      contentId,
+      type: 'movie'
+    }
+  })
+
+  const data = await res.json()
+  return data
 };
 
 

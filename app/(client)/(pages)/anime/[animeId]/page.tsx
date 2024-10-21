@@ -7,6 +7,7 @@ import { getAnimeDetail } from '@/app/(client)/service/animes.service';
 import { useQuery, useMutation } from 'react-query';
 import { useSession } from 'next-auth/react';
 import { client } from '@/app/(client)/lib/hc';
+import CommentAnime from '@/app/(client)/components/anime/CommentAnime';
 
 const AnimeStreamPage = ({ params }: { params: { animeId: string } }) => {
   const { data: session, update } = useSession();
@@ -57,6 +58,7 @@ const AnimeStreamPage = ({ params }: { params: { animeId: string } }) => {
             isLoading={isLoading}
           />
           <InfoMovie animeInfo={data?.results} isLoading={isLoading} />
+          <CommentAnime contentId={params.animeId} />
         </div>
       </SidebarLayout>
     </DefaultLayout>

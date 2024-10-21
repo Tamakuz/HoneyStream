@@ -1,6 +1,6 @@
 {
-  "id": "51409260-a097-418e-8689-bccdd15f939f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "90c502f3-8915-44d3-a356-5983f64822ec",
+  "prevId": "51409260-a097-418e-8689-bccdd15f939f",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -36,12 +36,6 @@
         "text": {
           "name": "text",
           "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "timestamp": {
-          "name": "timestamp",
-          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },

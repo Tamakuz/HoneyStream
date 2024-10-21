@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 import React from "react";
 import { useMutation, useQuery } from "react-query";
 import { client } from "@/app/(client)/lib/hc";
+import CommentMovie from "@/app/(client)/components/movie/CommentMovie";
 
 const MovieStreamPage = ({ params }: { params: { movieId: string } }) => {
   const { data: session, update } = useSession();
@@ -60,6 +61,7 @@ const MovieStreamPage = ({ params }: { params: { movieId: string } }) => {
           <InfoMovie movie={data?.results} isLoading={isLoading} />
           <AlternativeTitle titles={data?.results?.alternative_titles} />
           <CastMovie cast={data?.results?.cast} isLoading={isLoading} />
+          <CommentMovie contentId={params.movieId} />
         </div>
       </SidebarLayout>
     </DefaultLayout>

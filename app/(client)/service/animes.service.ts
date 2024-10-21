@@ -1,3 +1,5 @@
+import { client } from '@/app/(client)/lib/hc';
+
 export const getHomeAnimeList = async () => {
   const randomPage = Math.floor(Math.random() * 20) + 1;
   const res = await fetch(`https://ripleystream.vercel.app/api/v1/animes/popular?page=${randomPage}&limit=40&api_token=${process.env.NEXT_PUBLIC_RIPLEYSTREAM_API_TOKEN}`);
@@ -43,3 +45,15 @@ export const getAnimeSearch = async (query: string) => {
   return data;
 };
 
+
+export const getCommentsAnime = async (contentId: string) => {
+  const res = await client.api.comment[':contentId'][':type'].$get({
+    param: {
+      contentId,
+      type: 'anime'
+    }
+  })
+
+  const data = await res.json()
+  return data
+};
